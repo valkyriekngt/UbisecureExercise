@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         else {
-            Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT);
+            Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_SHORT).show();
         }
 
 

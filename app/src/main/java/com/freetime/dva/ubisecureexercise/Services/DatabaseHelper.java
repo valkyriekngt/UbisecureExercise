@@ -56,18 +56,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public User getCurrentUser(String username){
         User user = new User();
-        String[] columns = {
-                FIRST_NAME_COL,
-                LAST_NAME_COL,
-                USERNAME_COL,
-                PASSWORD_COL,
-                EMAIL_COL
-        };
-        String criteria = USERNAME_COL + "=?";
-        String[] criteriaArgs = {username};
+
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+ USERTABLE_NAME+ " WHERE USERNAME = \" aerogant \" " , null);
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ USERTABLE_NAME+ " WHERE USERNAME =" + "\""+ username +"\" " , null);
         if(cursor.moveToFirst()) {
             //Cursor cursor = db.query(USERTABLE_NAME, columns,criteria, criteriaArgs, null, null, null );
             user.setFirstName(cursor.getString(cursor.getColumnIndex(FIRST_NAME_COL)));
@@ -177,6 +169,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
         return false;
+    }
+
+    public void deleteUser(String usrnm){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(USERTABLE_NAME, USERNAME_COL + " =? ", new String[]{usrnm});
+        db.close();
     }
 
 

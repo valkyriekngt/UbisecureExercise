@@ -15,6 +15,16 @@ public class User implements Serializable {
         return serialVersionUID;
     }
 
+    public User(String userName, String password, String firstName, String lastName, String email) {
+        this.userName = userName;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public User(){};
+
     public String getUserName() {
         return userName;
     }

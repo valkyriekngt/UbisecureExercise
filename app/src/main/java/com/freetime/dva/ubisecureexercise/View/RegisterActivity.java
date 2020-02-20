@@ -1,13 +1,16 @@
 package com.freetime.dva.ubisecureexercise.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.freetime.dva.ubisecureexercise.R;
 import com.freetime.dva.ubisecureexercise.Services.DatabaseHelper;
@@ -109,6 +112,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setEmail(editTextEmail.getText().toString().trim());
 
             dbHelper.addUser(user);
+            Intent back = new Intent(this, LoginActivity.class);
+            emptyEditText();
+            startActivity(back);
+            Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
         }
         else{

@@ -17,6 +17,7 @@ public class InputValidation {
     public InputValidation(Context context){
         this.context = context;
     }
+    public InputValidation(){}
 
     public boolean isEditTextFilled(TextInputEditText editText, TextInputLayout layout, String message){
         String value = editText.getText().toString().trim();
@@ -47,5 +48,9 @@ public class InputValidation {
     private void hideKeyboardFrom(View view){
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+
+    public boolean isUbiCool(){
+        return true;
     }
 }
